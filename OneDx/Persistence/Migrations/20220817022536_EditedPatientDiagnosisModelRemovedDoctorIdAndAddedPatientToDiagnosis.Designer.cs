@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OneDx.Data;
+using OneDx.Persistence;
 
 #nullable disable
 
 namespace OneDx.Migrations
 {
     [DbContext(typeof(OneDxContext))]
-    [Migration("20220816163636_InitialModelCreationWithIdentityUser")]
-    partial class InitialModelCreationWithIdentityUser
+    [Migration("20220817022536_EditedPatientDiagnosisModelRemovedDoctorIdAndAddedPatientToDiagnosis")]
+    partial class EditedPatientDiagnosisModelRemovedDoctorIdAndAddedPatientToDiagnosis
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,7 +43,7 @@ namespace OneDx.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PatientId")
+                    b.Property<int>("PatientId")
                         .HasColumnType("int");
 
                     b.HasKey("DiagnosisId");
@@ -148,9 +148,13 @@ namespace OneDx.Migrations
 
             modelBuilder.Entity("OneDx.Models.Diagnosis", b =>
                 {
-                    b.HasOne("OneDx.Models.Patient", null)
+                    b.HasOne("OneDx.Models.Patient", "Patient")
                         .WithMany("Diagnoses")
-                        .HasForeignKey("PatientId");
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("OneDx.Models.Patient", b =>

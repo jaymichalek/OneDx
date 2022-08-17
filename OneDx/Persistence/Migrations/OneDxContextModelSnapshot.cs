@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OneDx.Data;
+using OneDx.Persistence;
 
 #nullable disable
 
@@ -41,7 +41,7 @@ namespace OneDx.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PatientId")
+                    b.Property<int>("PatientId")
                         .HasColumnType("int");
 
                     b.HasKey("DiagnosisId");
@@ -109,6 +109,47 @@ namespace OneDx.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Doctors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "969cd542-1552-4f06-9c5d-b1c7577d57dc",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "75d1a9ca-c113-4b45-927b-5d8df695a219",
+                            EmailConfirmed = false,
+                            FirstName = "John",
+                            LastName = "Smith",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "80eb5da4-2e51-4874-8c6e-f9ab0be588fd",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "948308cb-614d-47e2-be44-83c4db590db3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2118db73-ac8f-43f5-87ef-496023314135",
+                            EmailConfirmed = false,
+                            FirstName = "Mark",
+                            LastName = "Adams",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "33fa4dbc-3934-4833-a07f-8dab05e6a0ee",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "7ad97f1b-45b8-4af1-a2ca-42e52a0de901",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "907332dc-d4f2-4cc1-bebe-0862c16f34f2",
+                            EmailConfirmed = false,
+                            FirstName = "Joe",
+                            LastName = "Webber",
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7e7b993e-eccc-4850-885b-39959000b565",
+                            TwoFactorEnabled = false
+                        });
                 });
 
             modelBuilder.Entity("OneDx.Models.Patient", b =>
@@ -146,9 +187,13 @@ namespace OneDx.Migrations
 
             modelBuilder.Entity("OneDx.Models.Diagnosis", b =>
                 {
-                    b.HasOne("OneDx.Models.Patient", null)
+                    b.HasOne("OneDx.Models.Patient", "Patient")
                         .WithMany("Diagnoses")
-                        .HasForeignKey("PatientId");
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("OneDx.Models.Patient", b =>
