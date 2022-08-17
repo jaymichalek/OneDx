@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using OneDx.Data;
 using OneDx.Models;
+using OneDx.Persistence;
+using OneDx.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-// Add services for OneDx Database Connection ---------------------------------------
+
+// Add services for OneDx Database Connection and Repository ---------------------------------------
 builder.Services.AddDbContext<OneDxContext>(options =>
     options.UseSqlServer(connectionString));
+builder.Services.AddScoped<IOneDxRepository, OneDxRepository>();
 //-----------------------------------------------------------------------------------
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
