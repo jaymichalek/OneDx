@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OneDx.Persistence;
 
@@ -11,9 +12,10 @@ using OneDx.Persistence;
 namespace OneDx.Migrations
 {
     [DbContext(typeof(OneDxContext))]
-    partial class OneDxContextModelSnapshot : ModelSnapshot
+    [Migration("20220818022233_UpdatedModelsChangedListToICollectionAdddedIds")]
+    partial class UpdatedModelsChangedListToICollectionAdddedIds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -11,14 +11,15 @@ namespace OneDx.Models
         public int Age => this.CalculateAge(DateOfBirth);
         public Gender Gender { get; set; }
         public Doctor Doctor { get; set; }
-        public List<Diagnosis> Diagnoses { get; set; }
+        public string DoctorId { get; set; }
+        public ICollection<Diagnosis> Diagnoses { get; set; }
 
         public Patient()
         {
 
         }
 
-        public Patient(int patientId, string firstName, string lastName, DateTime dateOfBirth, Gender gender, Doctor doctor, List<Diagnosis> diagnoses)
+        public Patient(int patientId, string firstName, string lastName, DateTime dateOfBirth, Gender gender, Doctor doctor, string doctorId, ICollection<Diagnosis> diagnoses)
         {
             PatientId = patientId;
             FirstName = firstName;
@@ -26,6 +27,7 @@ namespace OneDx.Models
             DateOfBirth = dateOfBirth;
             Gender = gender;
             Doctor = doctor;
+            DoctorId = doctorId;
             Diagnoses = diagnoses;
         }
 
