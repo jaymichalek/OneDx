@@ -30,7 +30,7 @@ namespace OneDx.Controllers
             return _oneDxRepository.GetAllDiagnosesByPatientId(patientId);
         }
 
-        //Implement here (Use id instead) ------------------------------
+        //Implement here (Use id instead for update) ------------------------------
         [HttpPost]
         [Route("create")]
         public Diagnosis CreateDiagnosis(Diagnosis diagnosis)
