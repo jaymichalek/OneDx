@@ -10,9 +10,9 @@ namespace OneDx.Models
         public DateTime DateOfBirth { get; set; }
         public int Age => this.CalculateAge(DateOfBirth);
         public Gender Gender { get; set; }
-        public Doctor Doctor { get; set; }
+        public Doctor? Doctor { get; set; }
         public string DoctorId { get; set; }
-        public ICollection<Diagnosis> Diagnoses { get; set; }
+        public ICollection<Diagnosis>? Diagnoses { get; set; }
 
         public Patient()
         {
