@@ -6,7 +6,7 @@ namespace OneDx.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<Patient> Patients { get; set; }
+        public ICollection<Patient>? Patients { get; set; }
 
         public Doctor()
         {
