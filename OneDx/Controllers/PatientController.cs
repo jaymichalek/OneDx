@@ -36,8 +36,7 @@ namespace OneDx.Controllers
         {
             return _oneDxRepository.GetAllPatientsByDoctorId(doctorId);
         }
-
-        //Implement this here (Use ID instead) -------------------------------------------
+        
         [HttpPost]
         [Route("create")]
         public Patient CreatePatient(Patient patient)
@@ -45,6 +44,7 @@ namespace OneDx.Controllers
             return _oneDxRepository.Insert(patient);
         }
 
+        //Implement this here -------------------------------------------
         [HttpPut]
         [Route("update")]
         public Patient UpdatePatient(Patient patient)

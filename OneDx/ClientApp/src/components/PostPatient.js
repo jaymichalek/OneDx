@@ -9,6 +9,8 @@ export function PostPatient(props) {
     const [DoctorId, setDoctorId] = useState('');
     const navigate = useNavigate();
 
+
+    //FIXME -- 400 BAD REQUEST:
     const handleSubmit = (event) => {
         event.preventDefault();
         fetch('patient/create',
@@ -19,8 +21,7 @@ export function PostPatient(props) {
                     FirstName, LastName, DateOfBirth, Gender, DoctorId
                 })
             }
-        )
-        navigate('/listpatients')
+        ).then(() => navigate('/listpatients'))
     }
 
     return (

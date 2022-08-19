@@ -24,7 +24,7 @@ export class Patients extends Component {
         </thead>
         <tbody>
           {patients.map(patients =>
-            <tr key={patients.id}>
+            <tr key={patients.patientId}>
               <td>{patients.firstName}</td>
               <td>{patients.lastName}</td>
             </tr>

@@ -6,7 +6,7 @@
         public string DiagnosisCode { get; set; }
         public string DiagnosisName { get; set; }
         public DateTime DiagnosisDate { get; set; }
-        public Patient Patient { get; set; }
+        public Patient? Patient { get; set; }
         public int PatientId { get; set; }
 
         public Diagnosis()
