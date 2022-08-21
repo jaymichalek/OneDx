@@ -1,11 +1,13 @@
 ﻿import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
 import { Input, FormGroup, Label } from 'reactstrap';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 export function PostPatient(props) {
     const [FirstName, setFirstName] = useState('');
     const [LastName, setLastName] = useState('');
-    const [DateOfBirth, setDateOfBirth] = useState('');
+    const [DateOfBirth, setDateOfBirth] = useState(new Date());
     const [Gender, setGender] = useState('');
     const [DoctorId, setDoctorId] = useState('');
     const navigate = useNavigate();
@@ -37,9 +39,8 @@ export function PostPatient(props) {
                             <label htmlFor="lastName">Last Name</label>
                             <input type="text" placeholder = "Enter last name" name="LastName" value={LastName} className="form-control" onChange={(e) => setLastName(e.target.value)} />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="lastName">Date of Birth</label>
-                            <input type="text" placeholder="YYYY-MM-dd" name="DateOfBirth" value={DateOfBirth} className="form-control" onChange={(e) => setDateOfBirth(e.target.value)} />
+                        <div>
+                            <Calendar onChange={setDateOfBirth} value={DateOfBirth} />
                         </div>
                         <div>
                             <FormGroup check inline>
