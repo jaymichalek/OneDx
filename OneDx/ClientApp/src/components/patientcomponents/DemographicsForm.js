@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -10,7 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export function Demographics(props) {
+export function DemographicsForm(props) {
     const [FirstName, setFirstName] = useState('');
     const [LastName, setLastName] = useState('');
     const [DateOfBirth, setDateOfBirth] = useState(new Date());
@@ -44,8 +44,8 @@ export function Demographics(props) {
                 noValidate
                 autoComplete="off"
             >
-                <TextField label="First Name" id="outlined-size-normal" defaultValue="Enter First Name" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
-                <TextField label="Last Name" id="outlined-size-normal" defaultValue="Enter Last Name" value={LastName} onChange={(e) => setLastName(e.target.value)} />
+                <TextField label="First Name" id="outlined-size-normal" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
+                <TextField label="Last Name" id="outlined-size-normal" value={LastName} onChange={(e) => setLastName(e.target.value)} />
             </Box>
             <Box m={2}>
                 <div>
@@ -66,7 +66,7 @@ export function Demographics(props) {
                 </RadioGroup>
             </Box>
             <Box m={2}>
-                    <TextField label="Doctor Id" id="outlined-size-normal" defaultValue="Enter Doctor ID" value={DoctorId} onChange={(e) => setDoctorId(e.target.value)} />
+                    <TextField label="Doctor Id" id="outlined-size-normal" value={DoctorId} onChange={(e) => setDoctorId(e.target.value)} />
             </Box>
             <Box m={2}>
                 <Button type="submit" variant="contained" color="success">

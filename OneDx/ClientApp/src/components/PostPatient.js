@@ -1,8 +1,10 @@
-﻿import React from 'react'
-import { Demographics } from './patientcomponents/Demographics';
+﻿import React, { useNavigate } from 'react';
+import { DemographicsForm } from './patientcomponents/DemographicsForm';
 
 export function PostPatient(props) {
     return (
-        <Demographics />
+        <DemographicsForm />
+        //TODO: Add Diagnosis Component with search box
+        //TODO: Add Diagnosis Table Component
     );
 }
