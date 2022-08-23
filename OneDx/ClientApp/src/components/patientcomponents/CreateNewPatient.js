@@ -9,8 +9,9 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { PatientForm } from '../PatientForm';
 
-export function DemographicsForm(props) {
+export function CreateNewPatient(props) {
     const [FirstName, setFirstName] = useState('');
     const [LastName, setLastName] = useState('');
     const [DateOfBirth, setDateOfBirth] = useState(new Date());

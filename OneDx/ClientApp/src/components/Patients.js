@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import authService from './api-authorization/AuthorizeService'
 import { Link } from 'react-router-dom';
-import { NavLink, Modal, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { useNavigate } from 'react-router';
+import { NavLink } from 'reactstrap';
 
 export function Patients() { 
 
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    
     const populatePatientsData = async () => {
         const token = await authService.getAccessToken();
         const response = await fetch('patient/all', {
@@ -22,11 +21,6 @@ export function Patients() {
     useEffect(() => {
         populatePatientsData();
     }, [])
-
-    //const handleClick = () => {
-    //    console.log('clicked');
-    //    navigate("/edit-patient"); //path you want to redirect to
-    //}
 
     const renderPatientsTable = (patients) => {
     return (

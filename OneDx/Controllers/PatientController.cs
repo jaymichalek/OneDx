@@ -44,14 +44,12 @@ namespace OneDx.Controllers
             return _oneDxRepository.Insert(patient);
         }
 
-        //Implement this here -------------------------------------------
         [HttpPut]
         [Route("update")]
         public Patient UpdatePatient(Patient patient)
         {
             return _oneDxRepository.Update(patient);
         }
-        //Implement this here -------------------------------------------
 
         [HttpDelete]
         [Route("delete/{patientId}")]
