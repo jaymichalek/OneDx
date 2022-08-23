@@ -6,9 +6,6 @@ import { PatientForm } from '../PatientForm';
 
 export function UpdatePatient(props) {
     const { patientId } = useParams();
-
-    console.log("What UpdatePatient.js is getting as id: " + patientId);
-
     const [patient, setPatient] = useState();
     const navigate = useNavigate();
 
@@ -25,8 +22,7 @@ export function UpdatePatient(props) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(patient)
             }
-        );
-        navigate('/listpatients');
+        ).then(navigate('/listpatients'));
     }
 
     return (

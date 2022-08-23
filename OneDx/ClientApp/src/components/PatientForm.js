@@ -8,12 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CodeSearchBox } from './patientcomponents/CodeSearchBox';
- //return (
-    //    //TODO: Re-use demographics form here.
-    //    //TODO: Add Diagnosis Component with search box
-    //    //TODO: Add Diagnosis Table Component
-    //)
+
 export function PatientForm(props) {
     const [PatientId, setPatientId] = useState(props.patient.patientId);
     const [FirstName, setFirstName] = useState(props.patient.firstName);
@@ -24,9 +19,9 @@ export function PatientForm(props) {
 
     const [value, setValue] = useState(new Date(props.patient.dateOfBirth));
 
-    function onChange(nextValue) {
-        setValue(nextValue);
-    }
+    //function onChange(nextValue) {
+    //    setValue(nextValue);
+    //}
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -62,7 +57,7 @@ export function PatientForm(props) {
                 </Box>
                 <Box m={2}>
                     <div>
-                        <Calendar calendarType="US" defaultValue={value} onChange={onChange} /> 
+                        <Calendar calendarType="US" defaultValue={value} onChange={onChange} />
                     </div>
                 </Box>
                 <Box m={2}>
@@ -86,7 +81,6 @@ export function PatientForm(props) {
                         Submit
                     </Button>
                 </Box>
-                <CodeSearchBox />
             </form>
         </>
     );

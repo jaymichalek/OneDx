@@ -35,7 +35,7 @@ export function Patients() {
             {patients.map(patient =>
                 <tr key={patient.patientId} >
                     <td>{patient.firstName + ' ' + patient.lastName}</td>
-                    <td><NavLink tag={Link} className="btn btn-warning" to={`/edit-patient/${patient.patientId}`}>Edit</NavLink></td>
+                    <td><NavLink tag={Link} className="btn btn-primary" to={`/edit-patient/${patient.patientId}`}>View/Edit Info</NavLink></td>
                 </tr>
             )}
         </tbody>

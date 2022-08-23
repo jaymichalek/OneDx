@@ -24,13 +24,19 @@ namespace OneDx.Controllers
         }
 
         [HttpGet]
+        [Route("edit/{diagnosisId}")]
+        public Diagnosis GetDiagnosisById(int diagnosisId)
+        {
+            return _oneDxRepository.GetDiagnosisById(diagnosisId);
+        }
+
+        [HttpGet]
         [Route("bypatient/{patientId}")]
         public List<Diagnosis> GetAllDiagnosisByPatient(int patientId)
         {
             return _oneDxRepository.GetAllDiagnosesByPatientId(patientId);
         }
 
-        //Implement here (Use id instead for update) ------------------------------
         [HttpPost]
         [Route("create")]
         public Diagnosis CreateDiagnosis(Diagnosis diagnosis)
@@ -44,7 +50,6 @@ namespace OneDx.Controllers
         {
             return _oneDxRepository.Update(diagnosis);
         }
-        //Implement here (Use id instead) ------------------------------
 
         [HttpDelete]
         [Route("delete/{diagnosisId}")]
