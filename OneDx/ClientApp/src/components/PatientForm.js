@@ -8,6 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { CodeSearchBox } from './patientcomponents/CodeSearchBox';
  //return (
     //    //TODO: Re-use demographics form here.
     //    //TODO: Add Diagnosis Component with search box
@@ -17,16 +18,30 @@ export function PatientForm(props) {
     const [PatientId, setPatientId] = useState(props.patient.patientId);
     const [FirstName, setFirstName] = useState(props.patient.firstName);
     const [LastName, setLastName] = useState(props.patient.lastName);
-    const { dateReceived } = props.patient.dateOfBirth;
-    const { formattedDateOfBirth } = dateReceived.toLocaleDateString();
-    const [DateOfBirth, setDateOfBirth] = useState(formattedDateOfBirth); //props.patient.dateOfBirth
-
+    const [DateOfBirth, setDateOfBirth] = useState(props.patient.dateOfBirth);
     const [Gender, setGender] = useState(props.patient.gender);
     const [DoctorId, setDoctorId] = useState(props.patient.doctorId);
 
+    const [value, setValue] = useState(new Date(props.patient.dateOfBirth));
+
+    function onChange(nextValue) {
+        setValue(nextValue);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.submit({ PatientId, FirstName, LastName, DateOfBirth, Gender, DoctorId });
+        props.submit({ PatientId, FirstName, LastName, DateOfBirth, "Gender": Number(Gender), DoctorId });
+    }
+
+    //const convertDateTime = (dateTime) => {
+    //    const year = dateTime.substr(0, 4);
+    //    const month = dateTime.substr(5, 2);
+    //    const day = dateTime.substr(8, 2);
+    //    return new Date(year, month-1, day);
+    //};
+
+    function onChange(DateOfBirth) {
+        setDateOfBirth(DateOfBirth);
     }
 
     return (
@@ -47,7 +62,7 @@ export function PatientForm(props) {
                 </Box>
                 <Box m={2}>
                     <div>
-                        <Calendar onChange={setDateOfBirth} value={DateOfBirth} />
+                        <Calendar calendarType="US" defaultValue={value} onChange={onChange} /> 
                     </div>
                 </Box>
                 <Box m={2}>
@@ -71,6 +86,7 @@ export function PatientForm(props) {
                         Submit
                     </Button>
                 </Box>
+                <CodeSearchBox />
             </form>
         </>
     );

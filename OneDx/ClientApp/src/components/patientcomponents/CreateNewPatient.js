@@ -9,7 +9,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { PatientForm } from '../PatientForm';
 
 export function CreateNewPatient(props) {
     const [FirstName, setFirstName] = useState('');
@@ -30,6 +29,8 @@ export function CreateNewPatient(props) {
                 })
             }
         ).then(() => navigate('/listpatients'));
+        console.log('Submitted date: ' + DateOfBirth);
+        //Result: Submitted date: Sat Jun 26 1971 00:00:00 GMT-0700 (Mountain Standard Time)
     }
 
     return (
