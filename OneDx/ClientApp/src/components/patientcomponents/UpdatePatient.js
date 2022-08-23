@@ -29,7 +29,6 @@ export function UpdatePatient(props) {
         navigate('/listpatients');
     }
 
-    //FIX ME: NOT RENDERING FORM PROPERLY
     return (
         patient ?
             <PatientForm patient={patient} submit={handleSubmit} />
