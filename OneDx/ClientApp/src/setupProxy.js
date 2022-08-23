@@ -4,13 +4,16 @@ const { env } = require('process');
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
   env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'http://localhost:1607';
 
-const context =  [
-    "/weatherforecast",
+const context = [
     "/doctor/all",
     "/patient/all",
+    "/diagnosis/all",
     "/patient/create",
     "/patient/edit",
     "/patient/update",
+    "/diagnosis/create",
+    "/diagnosis/edit",
+    "/diagnosis/update",
     "/_configuration",
     "/.well-known",
     "/Identity",

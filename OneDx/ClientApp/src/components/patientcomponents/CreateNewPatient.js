@@ -29,8 +29,6 @@ export function CreateNewPatient(props) {
                 })
             }
         ).then(() => navigate('/listpatients'));
-        console.log('Submitted date: ' + DateOfBirth);
-        //Result: Submitted date: Sat Jun 26 1971 00:00:00 GMT-0700 (Mountain Standard Time)
     }
 
     return (
@@ -39,41 +37,41 @@ export function CreateNewPatient(props) {
                 Patient Demographics
             </Typography>
             <form onSubmit={handleSubmit}>
-            <Box
-                sx={{
-                    '& .MuiTextField-root': { m: 2, width: '25ch' },
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <TextField label="First Name" id="outlined-size-normal" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
-                <TextField label="Last Name" id="outlined-size-normal" value={LastName} onChange={(e) => setLastName(e.target.value)} />
-            </Box>
-            <Box m={2}>
-                <div>
-                     <Calendar onChange={setDateOfBirth} value={DateOfBirth} />
-                </div>
-            </Box>
-                <Box m={2}>
-                <RadioGroup
-                        aria-labelledby="demo-controlled-radio-buttons-group"
-                        defaultValue="female"
-                        name="controlled-radio-buttons-group"
-                        value={Gender}
-                        onChange={(e) => setGender(e.target.value)}
+                <Box
+                    sx={{
+                        '& .MuiTextField-root': { m: 2, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
                 >
-                    <FormControlLabel value="0" control={<Radio />} label="Male" />
-                    <FormControlLabel value="1" control={<Radio />} label="Female" />
-                    <FormControlLabel value="2" control={<Radio />} label="Non-binary" />
-                </RadioGroup>
-            </Box>
-            <Box m={2}>
-                    <TextField label="Doctor Id" id="outlined-size-normal" value={DoctorId} onChange={(e) => setDoctorId(e.target.value)} />
-            </Box>
-            <Box m={2}>
-                <Button type="submit" variant="contained" color="success">
-                    Submit
-                </Button>
+                    <TextField label="First Name" id="outlined-size-normal" value={FirstName} onChange={(e) => setFirstName(e.target.value)} />
+                    <TextField label="Last Name" id="outlined-size-normal" value={LastName} onChange={(e) => setLastName(e.target.value)} />
+                </Box>
+                <Box m={2}>
+                    <div>
+                         <Calendar onChange={setDateOfBirth} value={DateOfBirth} />
+                    </div>
+                </Box>
+                    <Box m={2}>
+                    <RadioGroup
+                            aria-labelledby="demo-controlled-radio-buttons-group"
+                            defaultValue="female"
+                            name="controlled-radio-buttons-group"
+                            value={Gender}
+                            onChange={(e) => setGender(e.target.value)}
+                    >
+                        <FormControlLabel value="0" control={<Radio />} label="Male" />
+                        <FormControlLabel value="1" control={<Radio />} label="Female" />
+                        <FormControlLabel value="2" control={<Radio />} label="Non-binary" />
+                    </RadioGroup>
+                </Box>
+                <Box m={2}>
+                        <TextField label="Doctor Id" id="outlined-size-normal" value={DoctorId} onChange={(e) => setDoctorId(e.target.value)} />
+                </Box>
+                <Box m={2}>
+                    <Button type="submit" variant="contained" color="success">
+                        Submit
+                    </Button>
                 </Box>
             </form>
         </>
