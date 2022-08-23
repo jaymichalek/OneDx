@@ -2,15 +2,18 @@
 import { useNavigate } from 'react-router';
 import 'react-calendar/dist/Calendar.css';
 import { useParams } from 'react-router-dom';
-import { DemographicsForm } from './DemographicsForm';
+import { PatientForm } from '../PatientForm';
 
-export default function UpdatePatientForm(props) {
-    const { PatientId } = useParams();
+export function UpdatePatient(props) {
+    const { patientId } = useParams();
+
+    console.log("What UpdatePatient.js is getting as id: " + patientId);
+
     const [patient, setPatient] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('patient/edit/' + PatientId)
+        fetch('patient/edit/' + patientId)
             .then(res => res.json())
             .then(p => setPatient(p));
     }, []);
@@ -26,8 +29,11 @@ export default function UpdatePatientForm(props) {
         navigate('/listpatients');
     }
 
+    //FIX ME: NOT RENDERING FORM PROPERLY
     return (
-        patient ? <DemographicsForm patient={patient} submit={handleSubmit} /> : <div>...loading</div>
+        patient ?
+            <PatientForm patient={patient} submit={handleSubmit} />
+            :
+            <div>...loading</div>
     );
-    
 }

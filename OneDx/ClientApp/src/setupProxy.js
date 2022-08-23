@@ -9,6 +9,8 @@ const context =  [
     "/doctor/all",
     "/patient/all",
     "/patient/create",
+    "/patient/edit",
+    "/patient/update",
     "/_configuration",
     "/.well-known",
     "/Identity",

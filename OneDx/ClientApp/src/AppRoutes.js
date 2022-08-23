@@ -3,9 +3,9 @@ import { Counter } from "./components/Counter";
 import { Doctors } from './components/Doctors';
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
-import UpdatePatientForm from './components/patientcomponents/UpdatePatientForm';
+import { CreateNewPatient } from './components/patientcomponents/CreateNewPatient';
 import { Patients } from './components/Patients';
-import { PostPatient } from './components/PostPatient';
+import { UpdatePatient }  from './components/patientcomponents/UpdatePatient';
 
 const AppRoutes = [
     {
@@ -34,12 +34,12 @@ const AppRoutes = [
     {
         path: '/create-patient',
         //requireAuth: true,
-        element: <PostPatient />
+        element: <CreateNewPatient />
     },
     {
-        path: '/edit-patient/:id',
+        path: '/edit-patient/:patientId',
         //requireAuth: true,
-        element: <UpdatePatientForm />
+        element: <UpdatePatient />
     },
   ...ApiAuthorzationRoutes
 ];
