@@ -28,8 +28,7 @@ namespace OneDx.Controllers
         {
             return oneDxRepository.GetDoctorById(id);
         }
-
-        //Implement this here --------------------------------
+       
         [HttpPost]
         [Route("create")]
         public Doctor CreateDoctor(Doctor doctor)
@@ -43,7 +42,6 @@ namespace OneDx.Controllers
         {
             return oneDxRepository.Update(doctor);
         }
-        //Implement this here --------------------------------
 
         [HttpDelete]
         [Route("delete/{doctorId}")]

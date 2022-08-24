@@ -7,7 +7,8 @@ import { UpdatePatient }  from './components/patientcomponents/UpdatePatient';
 import { Diagnosis } from './components/Diagnosis';
 import { UpdateDiagnosis } from './components/diagnosiscomponents/UpdateDiagnosis';
 import { AddDiagnosis } from './components/diagnosiscomponents/AddDiagnosis';
-
+import { UpdateDoctor } from './components/doctorcomponents/UpdateDoctor';
+import { AddDoctor } from './components/doctorcomponents/AddDoctor';
 
 const AppRoutes = [
     {
@@ -30,19 +31,29 @@ const AppRoutes = [
         element: <Diagnosis />
     },
     {
+        path: '/create-doctor',
+        //requireAuth: true,
+        element: <AddDoctor />
+    },
+    {
         path: '/create-patient',
         //requireAuth: true,
         element: <CreateNewPatient />
     },
     {
-        path: '/edit-patient/:patientId',
-        //requireAuth: true,
-        element: <UpdatePatient />
-    },
-    {
         path: '/create-diagnosis',
         //requireAuth: true,
         element: <AddDiagnosis />
+    },
+    {
+        path: '/edit-doctor/:id',
+        //requireAuth: true,
+        element: <UpdateDoctor />
+    },
+    {
+        path: '/edit-patient/:patientId',
+        //requireAuth: true,
+        element: <UpdatePatient />
     },
     {
         path: '/edit-diagnosis/:diagnosisId',
