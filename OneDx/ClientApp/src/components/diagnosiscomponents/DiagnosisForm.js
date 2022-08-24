@@ -27,7 +27,7 @@ export function DiagnosisForm(props) {
     return (
         <>
             <Typography variant="h4" gutterBottom>
-                Patient Demographics
+                Patient Diagnosis Form
             </Typography>
             <form onSubmit={handleSubmit}>
                 <Box
