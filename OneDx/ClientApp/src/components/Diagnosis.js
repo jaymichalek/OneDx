@@ -61,11 +61,9 @@ export function Diagnosis() {
         <>
             <h1 id="tabelLabel" >List of All Diagnoses</h1>
             <p>This table shows a lists of all diagnoses.</p>
-            <div>
-                <Button color="link" onClick={handleClick}>
-                    Add New Diagnosis
-                </Button>
-            </div>
+            <Button color="link" onClick={handleClick}>
+                Add New Diagnosis
+            </Button>
             {
                 loading
                 ? <p><em>Loading...</em></p>
