@@ -24,7 +24,7 @@ namespace OneDx.Controllers
 
         [HttpGet]
         [Route("edit/{id}")]
-        public Doctor? GetDoctorById(string id)
+        public Doctor? GetDoctorById(int id)
         {
             return oneDxRepository.GetDoctorById(id);
         }
@@ -45,7 +45,7 @@ namespace OneDx.Controllers
 
         [HttpDelete]
         [Route("delete/{doctorId}")]
-        public Doctor DeleteDoctor(string doctorId)
+        public Doctor DeleteDoctor(int doctorId)
         {
             return oneDxRepository.Delete(doctorId);
         }

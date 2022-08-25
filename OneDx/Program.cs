@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using OneDx.Data;
 using OneDx.Models;
-using OneDx.Persistence;
 using OneDx.Repositories;
+using Duende.IdentityServer.Models;
+using IdentityModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,10 +23,22 @@ builder.Services.AddScoped<IOneDxRepository, OneDxRepository>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddIdentityServer()
-    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
+    {
+        options.IdentityResources.Add(new IdentityResource("roles", "Roles", new[] { JwtClaimTypes.Role, JwtClaimTypes.Role }));
+        foreach (var c in options.Clients)
+        {
+            c.AllowedScopes.Add("roles");
+        }
+        foreach (var a in options.ApiResources)
+        {
+            a.UserClaims.Add(JwtClaimTypes.Role);
+        }
+    });
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();

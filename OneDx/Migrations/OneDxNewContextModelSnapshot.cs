@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OneDx.Persistence;
+using OneDx.Data;
 
 #nullable disable
 
 namespace OneDx.Migrations
 {
     [DbContext(typeof(OneDxContext))]
-    [Migration("20220818022233_UpdatedModelsChangedListToICollectionAdddedIds")]
-    partial class UpdatedModelsChangedListToICollectionAdddedIds
+    partial class OneDxNewContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,20 +53,15 @@ namespace OneDx.Migrations
 
             modelBuilder.Entity("OneDx.Models.Doctor", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -78,80 +71,9 @@ namespace OneDx.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Doctors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "cefec822-a5c0-41dc-9c22-ef6d1cf98f55",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "d528f887-8e0c-40ab-a721-88a501c8f587",
-                            EmailConfirmed = false,
-                            FirstName = "John",
-                            LastName = "Smith",
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "e2101a2c-fba5-49fd-8f5d-3bbb80dd9817",
-                            TwoFactorEnabled = false
-                        },
-                        new
-                        {
-                            Id = "09fefd59-a2e2-4a86-9e51-a6b4f38e4a84",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "5936d2a9-a609-4339-ac17-5c1b5d03c1d2",
-                            EmailConfirmed = false,
-                            FirstName = "Mark",
-                            LastName = "Adams",
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "460ad804-18ca-48f1-918f-d3cd39043880",
-                            TwoFactorEnabled = false
-                        },
-                        new
-                        {
-                            Id = "cb6f049b-7890-4f87-8e13-25ef09ef535b",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1aa8f19-6b30-4a3c-b09d-286c5a9c63de",
-                            EmailConfirmed = false,
-                            FirstName = "Joe",
-                            LastName = "Webber",
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "21b0d32f-6a29-4c47-8a97-fbb77a9d0f52",
-                            TwoFactorEnabled = false
-                        });
                 });
 
             modelBuilder.Entity("OneDx.Models.Patient", b =>
@@ -165,9 +87,8 @@ namespace OneDx.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DoctorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

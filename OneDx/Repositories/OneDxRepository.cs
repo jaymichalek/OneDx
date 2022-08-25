@@ -1,5 +1,5 @@
-﻿using OneDx.Models;
-using OneDx.Persistence;
+﻿using OneDx.Data;
+using OneDx.Models;
 
 namespace OneDx.Repositories
 {
@@ -19,7 +19,7 @@ namespace OneDx.Repositories
             return _context.Doctors.ToList();
         }
 
-        public Doctor GetDoctorById(string doctorId)
+        public Doctor GetDoctorById(int doctorId)
         {
             return _context.Doctors.FirstOrDefault(d => d.Id == doctorId);
         }
@@ -38,7 +38,7 @@ namespace OneDx.Repositories
             return doctor;
         }
 
-        public Doctor Delete(string doctorId)
+        public Doctor Delete(int doctorId)
         {
             Doctor doc = _context.Doctors.FirstOrDefault(d => d.Id == doctorId);
             _context.Doctors.Remove(doc);
@@ -53,7 +53,7 @@ namespace OneDx.Repositories
             return _context.Patients.ToList();
         }
 
-        public List<Patient> GetAllPatientsByDoctorId(string doctorId) 
+        public List<Patient> GetAllPatientsByDoctorId(int doctorId) 
         {
             return _context.Patients.ToList().FindAll(p => p.DoctorId == doctorId);
         }
@@ -76,7 +76,7 @@ namespace OneDx.Repositories
             return patient;
         }
 
-        public Patient Delete(int patientId)
+        public Patient DeletePatient(int patientId)
         {
             Patient pt = _context.Patients.FirstOrDefault(p => p.PatientId == patientId);
             _context.Patients.Remove(pt);

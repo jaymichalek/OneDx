@@ -32,7 +32,7 @@ namespace OneDx.Controllers
 
         [HttpGet]
         [Route("bydoctor/{doctorId}")]
-        public List<Patient> GetPatientByDoctorId(string doctorId)
+        public List<Patient> GetPatientByDoctorId(int doctorId)
         {
             return _oneDxRepository.GetAllPatientsByDoctorId(doctorId);
         }
@@ -55,7 +55,7 @@ namespace OneDx.Controllers
         [Route("delete/{patientId}")]
         public Patient DeletePatient(int patientId)
         {
-            return _oneDxRepository.Delete(patientId);
+            return _oneDxRepository.DeletePatient(patientId);
         }
     }
 }

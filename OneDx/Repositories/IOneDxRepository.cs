@@ -6,17 +6,17 @@ namespace OneDx.Repositories
     {
 
         public List<Doctor> GetAllDoctors();
-        public Doctor GetDoctorById(string doctorId); 
+        public Doctor GetDoctorById(int doctorId); 
         public Doctor Insert(Doctor doctor);
         public Doctor Update(Doctor doctor);
-        public Doctor Delete(string doctorId);
+        public Doctor Delete(int doctorId);
 
         public List<Patient> GetAllPatients();
-        public List<Patient> GetAllPatientsByDoctorId(string doctorId);
+        public List<Patient> GetAllPatientsByDoctorId(int doctorId);
         public Patient GetPatientById(int id);
         public Patient Insert(Patient patient);
         public Patient Update(Patient patient);
-        public Patient Delete(int patientId);
+        public Patient DeletePatient(int patientId);
 
         public List<Diagnosis> GetAllDiagnoses();
         public List<Diagnosis> GetAllDiagnosesByPatientId(int patientId);

@@ -1,25 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
 
 namespace OneDx.Data.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class ApplicationUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
+               name: "AspNetRoles",
+               columns: table => new
+               {
+                   Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                   Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                   NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                   ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+               },
+               constraints: table =>
+               {
+                   table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+               });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
@@ -58,7 +60,7 @@ namespace OneDx.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Expiration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Data = table.Column<string>(type: "nvarchar(max)", maxLength: 50020, nullable: false)
+                    Data = table.Column<string>(type: "nvarchar(max)", maxLength: 52060, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,7 +78,7 @@ namespace OneDx.Data.Migrations
                     Algorithm = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsX509Certificate = table.Column<bool>(type: "bit", nullable: false),
                     DataProtected = table.Column<bool>(type: "bit", nullable: false),
-                    Data = table.Column<string>(type: "nvarchar(max)", maxLength: 50020, nullable: false)
+                    Data = table.Column<string>(type: "nvarchar(max)", maxLength: 52060, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -96,7 +98,7 @@ namespace OneDx.Data.Migrations
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Expiration = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ConsumedTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Data = table.Column<string>(type: "nvarchar(max)", maxLength: 50020, nullable: false)
+                    Data = table.Column<string>(type: "nvarchar(max)", maxLength: 52060, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -287,35 +289,7 @@ namespace OneDx.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "DeviceCodes");
-
-            migrationBuilder.DropTable(
-                name: "Keys");
-
-            migrationBuilder.DropTable(
-                name: "PersistedGrants");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
+            
         }
     }
 }
