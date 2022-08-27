@@ -36,7 +36,7 @@ namespace OneDx.Controllers
         {
             return _oneDxRepository.GetAllPatientsByDoctorId(doctorId);
         }
-        
+
         [HttpPost]
         [Route("create")]
         public Patient CreatePatient(Patient patient)

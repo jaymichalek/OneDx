@@ -7,10 +7,28 @@ export function Patients() {
 
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [doctor, setDoctor] = useState();
+
+    const confirmDoctor = async () => {
+        const user = await authService.getUser();
+        console.log(user);
+        const token = await authService.getAccessToken();
+        const response = await fetch("doctor/editDoc/" + user.name,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            }
+        );
+        const data = await response.json();
+        setDoctor(data);
+    }
     
     const populatePatientsData = async () => {
         const token = await authService.getAccessToken();
-        const response = await fetch('patient/all', {
+        const response = await fetch('patient/bydoctor/' + doctor.id, {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
@@ -19,8 +37,8 @@ export function Patients() {
     }
 
     useEffect(() => {
-        populatePatientsData();
-    }, [])
+        confirmDoctor().then(() => populatePatientsData());
+    }, [doctor, setDoctor])
 
     const renderPatientsTable = (patients) => {
     return (
@@ -46,8 +64,8 @@ export function Patients() {
     return (
         <>
             
-            <h1 id="tabelLabel" >List of All Patients</h1>
-            <p>This table shows a lists of all patients.</p>
+            <h1 id="tabelLabel" >List of My Patients</h1>
+            <p>This table shows a lists of my patients.</p>
             {
                 loading
                 ? <p><em>Loading...</em></p>

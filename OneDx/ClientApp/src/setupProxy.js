@@ -18,6 +18,8 @@ const context = [
     "/doctor/update",
     "/patient/update",
     "/diagnosis/update",
+    "/patient/bydoctor",
+    "/diagnosis/bypatient",
     "/_configuration",
     "/.well-known",
     "/Identity",

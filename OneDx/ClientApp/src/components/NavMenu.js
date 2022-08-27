@@ -3,6 +3,7 @@ import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from '
 import { Link } from 'react-router-dom';
 import { LoginMenu } from './api-authorization/LoginMenu';
 import './NavMenu.css';
+import authService from './api-authorization/AuthorizeService';
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -12,9 +13,19 @@ export class NavMenu extends Component {
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
-      collapsed: true
+        collapsed: true,
+        roles: []
     };
-  }
+    }
+
+    componentDidMount = () => {
+        authService.getUser()
+            .then(user => {
+                let roles = [...this.state.roles, user.role];
+                console.log(roles);
+                this.setState({ roles: roles });
+            })
+    }
 
   toggleNavbar () {
     this.setState({
@@ -33,18 +44,31 @@ export class NavMenu extends Component {
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
               </NavItem>
+                {
+                    this.state.roles.find(r => r === "Admin")
+                        ?
+                        <>
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/listdoctors">All Doctors</NavLink>
               </NavItem>
+                        </>
+                        :
+                        ""
+                }
+                {
+                    this.state.roles.find(r => r === "Doctor")
+                        ? 
+                        <>
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/listpatients">All Patients</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/listdiagnosis">All Diagnosis</NavLink>
-               </NavItem>
                <NavItem>
                  <NavLink tag={Link} className="text-dark" to="/create-patient">Create Patient</NavLink>
                </NavItem>
+                        </>
+                            :
+                        ""
+               }
               <LoginMenu>
               </LoginMenu>
             </ul>

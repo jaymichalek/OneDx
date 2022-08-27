@@ -123,5 +123,9 @@ namespace OneDx.Repositories
             return dx;
         }
 
+        public Doctor? GetDoctorByEmail(string email)
+        {
+            return _context.Doctors.FirstOrDefault(d => d.Email == email);
+        }
     }
 }
