@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router';
 export function AddDoctor(props) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
 
     const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ export function AddDoctor(props) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    firstName, lastName
+                    firstName, lastName, email
                 })
             }
         ).then(() => navigate('/listdoctors'));
@@ -40,6 +41,7 @@ export function AddDoctor(props) {
                 >
                     <TextField label="First Name" id="outlined-size-normal" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                     <TextField label="Last Name" id="outlined-size-normal" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                    <TextField label="Email Address" id="outlined-size-normal" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </Box>
                 <Box m={2}>
                     <Button type="submit" variant="contained" color="success">

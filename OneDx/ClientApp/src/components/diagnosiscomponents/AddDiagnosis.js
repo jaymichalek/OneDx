@@ -24,13 +24,13 @@ export function AddDiagnosis(props) {
                     diagnosisCode, diagnosisName, diagnosisDate, patientId
                 })
             }
-        ).then(() => navigate('/listdiagnosis'));
+        ).then(() => navigate('/listpatients'));
     }
 
     return (
         <>
             <Typography variant="h4" gutterBottom>
-                Patient Demographics
+                Patient Diagnosis Form
             </Typography>
             <form onSubmit={handleSubmit}>
                 <Box

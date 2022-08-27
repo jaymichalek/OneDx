@@ -1,4 +1,5 @@
 ﻿using OneDx.Models;
+using static Duende.IdentityServer.Models.IdentityResources;
 
 namespace OneDx.Repositories
 {
@@ -6,7 +7,8 @@ namespace OneDx.Repositories
     {
 
         public List<Doctor> GetAllDoctors();
-        public Doctor GetDoctorById(int doctorId); 
+        public Doctor GetDoctorById(int doctorId);
+        public Doctor? GetDoctorByEmail(string email);
         public Doctor Insert(Doctor doctor);
         public Doctor Update(Doctor doctor);
         public Doctor Delete(int doctorId);

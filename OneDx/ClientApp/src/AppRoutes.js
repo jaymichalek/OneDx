@@ -17,47 +17,47 @@ const AppRoutes = [
     },
     {
         path: '/listdoctors',
-        //requireAuth: true,
+        requireAuth: true,
         element: <Doctors />
     },
     {
         path: '/listpatients',
-        //requireAuth: true,
+        requireAuth: true,
         element: <Patients />
     },
     {
-        path: '/listdiagnosis',
-        //requireAuth: true,
+        path: '/listdiagnosis/:patientId',
+        requireAuth: true,
         element: <Diagnosis />
     },
     {
         path: '/create-doctor',
-        //requireAuth: true,
+        requireAuth: true,
         element: <AddDoctor />
     },
     {
         path: '/create-patient',
-        //requireAuth: true,
+        requireAuth: true,
         element: <CreateNewPatient />
     },
     {
         path: '/create-diagnosis',
-        //requireAuth: true,
+        requireAuth: true,
         element: <AddDiagnosis />
     },
     {
         path: '/edit-doctor/:id',
-        //requireAuth: true,
+        requireAuth: true,
         element: <UpdateDoctor />
     },
     {
         path: '/edit-patient/:patientId',
-        //requireAuth: true,
+        requireAuth: true,
         element: <UpdatePatient />
     },
     {
         path: '/edit-diagnosis/:diagnosisId',
-        //requireAuth: true,
+        requireAuth: true,
         element: <UpdateDiagnosis />
     },
   ...ApiAuthorzationRoutes

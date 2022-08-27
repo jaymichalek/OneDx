@@ -28,7 +28,14 @@ namespace OneDx.Controllers
         {
             return oneDxRepository.GetDoctorById(id);
         }
-       
+
+        [HttpGet]
+        [Route("editDoc/{email}")]
+        public Doctor? GetDoctorByEmail(string email)
+        {
+            return oneDxRepository.GetDoctorByEmail(email);
+        }
+
         [HttpPost]
         [Route("create")]
         public Doctor CreateDoctor(Doctor doctor)

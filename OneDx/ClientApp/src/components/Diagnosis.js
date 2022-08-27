@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import authService from './api-authorization/AuthorizeService'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { NavLink } from 'reactstrap';
 import { Button } from 'reactstrap';
 
-export function Diagnosis() { 
-
+export function Diagnosis(props) {
+    const { patientId } = useParams();
     const [diagnosis, setDiagnosis] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -14,7 +14,7 @@ export function Diagnosis() {
     
     const populateDiagnosisData = async () => {
         const token = await authService.getAccessToken();
-        const response = await fetch('diagnosis/all', {
+        const response = await fetch('diagnosis/bypatient/' + patientId, {
             headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
@@ -27,7 +27,6 @@ export function Diagnosis() {
     }, [])
 
     const handleClick = () => {
-        console.log('clicked');
         navigate('/create-diagnosis');
     }
 
@@ -59,8 +58,8 @@ export function Diagnosis() {
 
     return (
         <>
-            <h1 id="tabelLabel" >List of All Diagnoses</h1>
-            <p>This table shows a lists of all diagnoses.</p>
+            <h1 id="tabelLabel" >List of My Diagnoses</h1>
+            <p>This table shows a lists of my diagnoses.</p>
             <Button color="link" onClick={handleClick}>
                 Add New Diagnosis
             </Button>

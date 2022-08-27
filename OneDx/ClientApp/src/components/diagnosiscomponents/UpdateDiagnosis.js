@@ -23,7 +23,7 @@ export function UpdateDiagnosis(props) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(diagnosis)
             }
-        ).then(navigate('/listdiagnosis'));
+        ).then(navigate('/listpatients/'));
     }
 
     return (
