@@ -24,6 +24,11 @@ namespace OneDx.Repositories
             return _context.Doctors.FirstOrDefault(d => d.Id == doctorId);
         }
 
+        public Doctor? GetDoctorByEmail(string email)
+        {
+            return _context.Doctors.FirstOrDefault(d => d.Email == email);
+        }
+
         public Doctor Insert(Doctor doctor)
         {
             _context.Doctors.Add(doctor);
@@ -123,9 +128,5 @@ namespace OneDx.Repositories
             return dx;
         }
 
-        public Doctor? GetDoctorByEmail(string email)
-        {
-            return _context.Doctors.FirstOrDefault(d => d.Email == email);
-        }
     }
 }

@@ -24,7 +24,7 @@ namespace OneDx.Controllers
 
         [HttpGet]
         [Route("edit/{id}")]
-        public Doctor? GetDoctorById(int id)
+        public Doctor GetDoctorById(int id)
         {
             return oneDxRepository.GetDoctorById(id);
         }

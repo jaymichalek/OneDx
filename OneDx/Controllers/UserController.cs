@@ -44,16 +44,16 @@ namespace OneDx.Controllers
         [Route("newRoles")]
         public async Task CreateRoles()
         {
-            bool isRoleCreated = await _roleManager.RoleExistsAsync("Admin");
+            bool isRoleCreated = await _roleManager.RoleExistsAsync("Doctor");
             if (!isRoleCreated)
             {
                 var role = new IdentityRole();
-                role.Name = "Admin";
+                role.Name = "Doctor";
                 await _roleManager.CreateAsync(role);
             }
 
-            ApplicationUser user = await _userManager.FindByEmailAsync("markadams@gmail.com");
-            await _userManager.AddToRoleAsync(user, "Admin");
+            ApplicationUser user = await _userManager.FindByEmailAsync("joeysmith@gmail.com");
+            await _userManager.AddToRoleAsync(user, "Doctor");
         }
     }
 }
