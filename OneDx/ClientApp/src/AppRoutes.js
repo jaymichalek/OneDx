@@ -41,7 +41,7 @@ const AppRoutes = [
         element: <CreateNewPatient />
     },
     {
-        path: '/create-diagnosis',
+        path: '/create-diagnosis/:patientId',
         requireAuth: true,
         element: <AddDiagnosis />
     },

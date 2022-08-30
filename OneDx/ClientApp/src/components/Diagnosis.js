@@ -27,7 +27,7 @@ export function Diagnosis(props) {
     }, [])
 
     const handleClick = () => {
-        navigate('/create-diagnosis');
+        navigate('/create-diagnosis/' + patientId);
     }
 
     const renderDiagnosisTable = (diagnoses) => {

@@ -44,6 +44,13 @@ namespace OneDx.Controllers
             return _oneDxRepository.Insert(diagnosis);
         }
 
+        [HttpPost]
+        [Route("createforpatient/{patientId}")]
+        public Diagnosis CreateDiagnosis(int patientId, Diagnosis diagnosis)
+        {
+            return _oneDxRepository.Insert(patientId, diagnosis);
+        }
+
         [HttpPut]
         [Route("update")]
         public Diagnosis UpdateDiagnosis(Diagnosis diagnosis)

@@ -24,6 +24,7 @@ namespace OneDx.Repositories
         public List<Diagnosis> GetAllDiagnosesByPatientId(int patientId);
         public Diagnosis GetDiagnosisById(int id);
         public Diagnosis Insert(Diagnosis diagnosis);
+        public Diagnosis Insert(int patientId, Diagnosis diagnosis);
         public Diagnosis Update(Diagnosis diagnosis);
         public Diagnosis DeleteDiagnosis(int diagnosisId);
 

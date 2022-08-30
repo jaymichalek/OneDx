@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import authService from './api-authorization/AuthorizeService'
+import authService from './api-authorization/AuthorizeService';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'reactstrap';
 
