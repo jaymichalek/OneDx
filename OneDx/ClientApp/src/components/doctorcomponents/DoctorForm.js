@@ -9,7 +9,7 @@ export function DoctorForm(props) {
     const [id, setDoctorId] = useState(props.doctor.id);
     const [firstName, setFirstName] = useState(props.doctor.firstName);
     const [lastName, setLastName] = useState(props.doctor.lastName);
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(props.doctor.email);
 
     const handleSubmit = (e) => {
         e.preventDefault();
