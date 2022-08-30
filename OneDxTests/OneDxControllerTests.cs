@@ -27,7 +27,7 @@ namespace OneDxTests
         private DiagnosisController diagnosisController;
         private List<Diagnosis> diagnoses;
         private Diagnosis testDiagnosis;
-        private Diagnosis newDiagnosis;
+        private Diagnosis fakeDiagnosis;
         private List<Diagnosis> diagnosisPatientOne;
 
         [SetUp]
@@ -54,10 +54,10 @@ namespace OneDxTests
             diagnoses = new List<Diagnosis>();
             testDiagnosis = new Diagnosis { DiagnosisId = 1, DiagnosisCode = "I10", DiagnosisName = "Hypertension, unspecified", DiagnosisDate = new DateTime(2022, 08, 01), PatientId = 1 };
             diagnoses.Add(testDiagnosis);
-            newDiagnosis = new Diagnosis { DiagnosisId = 2, DiagnosisCode = "E11.9", DiagnosisName = "Diabetes Mellitus Type II", DiagnosisDate = new DateTime(2022, 08, 18), PatientId = 1 };
+            fakeDiagnosis = new Diagnosis { DiagnosisId = 2, DiagnosisCode = "E11.9", DiagnosisName = "Diabetes Mellitus Type II", DiagnosisDate = new DateTime(2022, 08, 18), PatientId = 1 };
             diagnosisPatientOne = new List<Diagnosis>();
             diagnosisPatientOne.Add(testDiagnosis);
-            diagnosisPatientOne.Add(newDiagnosis);
+            diagnosisPatientOne.Add(fakeDiagnosis);
         }
 
         /**
@@ -253,36 +253,50 @@ namespace OneDxTests
         public void CreateDiagnosis_CallsRepo_ReturnsDiagnosis()
         {
             //Arrange
-            mockRepo.Setup(repo => repo.Insert(newDiagnosis)).Returns(newDiagnosis);
+            mockRepo.Setup(repo => repo.Insert(fakeDiagnosis)).Returns(fakeDiagnosis);
             //Act
-            Diagnosis returnedDiagnosis = diagnosisController.CreateDiagnosis(newDiagnosis);
+            Diagnosis returnedDiagnosis = diagnosisController.CreateDiagnosis(fakeDiagnosis);
             //Assert
-            mockRepo.Verify(repo => repo.Insert(newDiagnosis), Times.Once());
-            Assert.That(returnedDiagnosis, Is.EqualTo(newDiagnosis));
+            mockRepo.Verify(repo => repo.Insert(fakeDiagnosis), Times.Once());
+            Assert.That(returnedDiagnosis, Is.EqualTo(fakeDiagnosis));
+        }
+
+        [Test]
+        public void CreateDiagnosisForPatient_CallsRepo_ReturnsDiagnosis()
+        {
+            //Arrange
+            int patientId = 1;
+            fakeDiagnosis = new Diagnosis { DiagnosisId = 2, DiagnosisCode = "E11.9", DiagnosisName = "Diabetes Mellitus Type II", DiagnosisDate = new DateTime(2022, 08, 18), PatientId = patientId };
+            mockRepo.Setup(repo => repo.Insert(patientId, fakeDiagnosis)).Returns(fakeDiagnosis);
+            //Act
+            Diagnosis returnedDiagnosis = diagnosisController.CreateDiagnosis(patientId, fakeDiagnosis);
+            //Assert
+            mockRepo.Verify(repo => repo.Insert(patientId, fakeDiagnosis), Times.Once());
+            Assert.That(returnedDiagnosis, Is.EqualTo(fakeDiagnosis));
         }
 
         [Test]
         public void UpdateDiagnosis_CallsRepo_ReturnsDiagnosis()
         {
             //Arrange
-            mockRepo.Setup(repo => repo.Update(newDiagnosis)).Returns(newDiagnosis);
+            mockRepo.Setup(repo => repo.Update(fakeDiagnosis)).Returns(fakeDiagnosis);
             //Act
-            Diagnosis result = diagnosisController.UpdateDiagnosis(newDiagnosis);
+            Diagnosis result = diagnosisController.UpdateDiagnosis(fakeDiagnosis);
             //Assert
-            mockRepo.Verify(repo => repo.Update(newDiagnosis), Times.Once());
-            Assert.That(result, Is.EqualTo(newDiagnosis));
+            mockRepo.Verify(repo => repo.Update(fakeDiagnosis), Times.Once());
+            Assert.That(result, Is.EqualTo(fakeDiagnosis));
         }
 
         [Test]
         public void DeleteDiagnosis_CallsRepo_ReturnsDeletedDiagnosis()
         {
             //Arrange
-            mockRepo.Setup(repo => repo.DeleteDiagnosis(1)).Returns(newDiagnosis);
+            mockRepo.Setup(repo => repo.DeleteDiagnosis(1)).Returns(fakeDiagnosis);
             //Act
             Diagnosis result = diagnosisController.DeleteDiagnosis(1);
             //Assert
             mockRepo.Verify(repo => repo.DeleteDiagnosis(1), Times.Once());
-            Assert.That(result, Is.EqualTo(newDiagnosis));
+            Assert.That(result, Is.EqualTo(fakeDiagnosis));
         }
     }
 
