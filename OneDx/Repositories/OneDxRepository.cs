@@ -113,6 +113,14 @@ namespace OneDx.Repositories
             return diagnosis;
         }
 
+        public Diagnosis Insert(int patientId, Diagnosis diagnosis)
+        {
+            Diagnosis newDiagnosis = new Diagnosis { DiagnosisCode = diagnosis.DiagnosisCode, DiagnosisName = diagnosis.DiagnosisName, DiagnosisDate = diagnosis.DiagnosisDate, PatientId = patientId };
+            _context.Diagnoses.Add(newDiagnosis);
+            _context.SaveChanges();
+            return diagnosis;
+        }
+
         public Diagnosis Update(Diagnosis diagnosis)
         {
             _context.Diagnoses.Update(diagnosis);
@@ -128,5 +136,6 @@ namespace OneDx.Repositories
             return dx;
         }
 
+        
     }
 }

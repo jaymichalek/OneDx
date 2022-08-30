@@ -6,12 +6,13 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useParams } from 'react-router-dom';
 
 export function AddDiagnosis(props) {
+    const { patientId } = useParams();
     const [diagnosisCode, setDiagnosisCode] = useState('');
     const [diagnosisName, setDiagnosisName] = useState('');
     const [diagnosisDate, setDiagnosisDate] = useState(new Date());
-    const [patientId, setPatientId] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -26,7 +27,7 @@ export function AddDiagnosis(props) {
             }
         ).then(() => navigate('/listpatients'));
     }
-
+   
     return (
         <>
             <Typography variant="h4" gutterBottom>
@@ -48,9 +49,9 @@ export function AddDiagnosis(props) {
                         <Calendar calendarType="US" onChange={setDiagnosisDate} value={diagnosisDate} />
                     </div>
                 </Box>
-                <Box m={2}>
-                    <TextField label="Patient Id" id="outlined-size-normal" value={patientId} onChange={(e) => setPatientId(e.target.value)} />
-                </Box>
+                 <Box m={2}>
+                   <TextField label="Patient Id" id="outlined-size-normal" value={patientId} />
+                 </Box>
                 <Box m={2}>
                     <Button type="submit" variant="contained" color="success">
                         Submit

@@ -12,6 +12,7 @@ const context = [
     "/doctor/create",
     "/patient/create",
     "/diagnosis/create",
+    "/diagnosis/createforpatient",
     "/doctor/edit",
     "/patient/edit",
     "/diagnosis/edit",

@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { PatientForm } from '../PatientForm';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'reactstrap';
-import { Button } from 'reactstrap';
 
 export function UpdatePatient(props) {
     const { patientId } = useParams();
@@ -32,7 +31,7 @@ export function UpdatePatient(props) {
         patient ?
             <>
                 <PatientForm patient={patient} submit={handleSubmit} />
-                <NavLink tag={Link} className="btn btn-primary" to={`/listdiagnosis/${patient.patientId}`}>My Diagnoses</NavLink>
+                <NavLink tag={Link} className="btn btn-primary btn-sm" to={`/listdiagnosis/${patient.patientId}`}>My Diagnoses</NavLink>
             </>
             :
             <div>...loading</div>
