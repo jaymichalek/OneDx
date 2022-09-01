@@ -18,7 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDbContext<OneDxContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IOneDxRepository, OneDxRepository>();
-//-----------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -39,6 +39,15 @@ builder.Services.AddIdentityServer()
             a.UserClaims.Add(JwtClaimTypes.Role);
         }
     });
+
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("Admin", policy =>
+//        policy.RequireClaim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", "Admin"));
+
+//    options.AddPolicy("User", policy =>
+//        policy.RequireClaim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", new[] { "Admin", "Doctor" }));
+//});
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();

@@ -8,7 +8,9 @@ export class Home extends Component {
     return (
       <div>
             <h1>One Dx: Prototype for tracking patient's diagnosis & other patient data.</h1>
-            <img className="homephoto" src={doctor} alt={"Doctor on a laptop"} />
+            <p></p>
+            <p></p>
+            <img className="img-fluid" src={doctor} alt={"Doctor on a laptop"} />
 
         {/*<p>Welcome to your new single-page application, built with:</p>*/}
         {/*<ul>*/}
