@@ -1,6 +1,6 @@
 # OneDx
 
-Created a full stack CRUD application using C#/.Net framework for back end, React for front end, and MSSQL for database.
+Created a full stack CRUD application from scratch using C#/.Net framework for back end, React for front end, and used MS SQL server for database.
 I came up with this idea Capstone project during my initial training with my employer. 
 This full stack web application is a mock electronic medical charting where doctors can log in and add, update, get information 
 and delete information for their own specific patients.
